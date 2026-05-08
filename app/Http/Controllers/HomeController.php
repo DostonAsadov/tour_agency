@@ -10,7 +10,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('layouts.app');
+        return view('pages.home');
     }
 
     public function about()

@@ -16,3 +16,4 @@ Route::get('/about', [HomeController::class, 'about'])->name('about'); // About 
 Route::get('/category', [CategoryController::class, 'index'])->name('category'); // Category Page Route
 Route::get('/tour', [TourController::class, 'index'])->name('tour'); // Tour Page Route  
 Route::get('/booking', [BookingController::class, 'index'])->name('booking'); // Booking page Route 
+Route::get('/tours', [TourController::class, 'index'])->name('tours'); // Tours page Route

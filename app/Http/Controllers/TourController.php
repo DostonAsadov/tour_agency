@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tour;
 
 class TourController extends Controller
 {
     //
     public function index()
     {
-        return 'This is Tour Controller';
+        $tours = Tour::all();
+        return view('pages.tours', compact('tours'));
     }
 }
