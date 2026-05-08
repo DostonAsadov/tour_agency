@@ -10,6 +10,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        return 'This is Home Controller';
+        return view('layouts.app');
+    }
+
+    public function about()
+    {
+        return 'This is About Controller';
     }
 }

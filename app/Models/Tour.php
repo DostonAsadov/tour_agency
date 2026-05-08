@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Tour extends Model
@@ -24,4 +25,15 @@ class Tour extends Model
         'capacity_of_people',
         'season'
     ];
+    protected $casts = [
+        'price' => 'decimal:2',
+        'duration' => 'integer',
+        'capacity_of_people' => 'integer',
+    ];
+
+    // Relation to categories
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class, 'category_tour');
+    }
 }
