@@ -10,6 +10,6 @@ class BookingController extends Controller
 
     public function index()
     {
-        return 'This is Booking Form page';
+        return view('pages.booking');
     }
 }

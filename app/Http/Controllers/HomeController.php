@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,6 +16,9 @@ class HomeController extends Controller
 
     public function about()
     {
-        return 'This is About Controller';
+        $about = About::query()->findOrFail(1);
+        return view('pages.about', [
+            'about' => $about
+        ]);
     }
 }

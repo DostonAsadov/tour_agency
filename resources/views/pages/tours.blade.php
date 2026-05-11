@@ -29,7 +29,7 @@
                                 <li class="list-group-item">Season: {{ $tour->season}}</li>
                             </ul>
                             <div class="card-body">
-                                <a href="#" class="card-link">Ссылка карточки</a>
+                                <a href="{{ route('tour', ['id' => $tour->id]) }}" class="card-link">View Details</a>
                             </div>
                         </div>
                     </div>
