@@ -412,8 +412,12 @@
                                 Something went wrong. Please try again.
                             </div>
 
-                            <form id="bookingForm" novalidate>
+                            <form action="{{ route('booking.store') }}" method="POST" id="bookingForm" novalidate>
                                 @csrf
+
+                                @if(session('success'))
+                                    <div class="alert">{{ session('success') }}</div>
+                                @endif
 
                                 <div class="input-icon-wrap">
                                     <i class="fa-regular fa-user field-icon"></i>
