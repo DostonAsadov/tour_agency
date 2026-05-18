@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Services\GoogleSheetsService;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,8 @@ class BookingController extends Controller
 {
     public function index()
     {
-        return view('pages.booking'); // resources/views/pages/booking.blade.php
+        $about = About::first();
+        return view('pages.booking', compact('about')); // resources/views/pages/booking.blade.php
     }
 
     public function store(Request $request)

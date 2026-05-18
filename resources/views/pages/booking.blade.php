@@ -462,7 +462,7 @@
                                 </div>
                                 <div>
                                     <p class="contact-label">Address</p>
-                                    <p class="contact-value">198 West 21th Street, Suite 721<br>New York NY 10016</p>
+                                    <p class="contact-value">{{ $about->address }}</p>
                                 </div>
                             </div>
 
@@ -473,7 +473,7 @@
                                 <div>
                                     <p class="contact-label">Phone</p>
                                     <p class="contact-value">
-                                        <a href="tel:+12352355988">+1 235 2355 98</a>
+                                        <a href="tel:{{ $about->phone }}">{{ $about->phone }}</a>
                                     </p>
                                 </div>
                             </div>
@@ -485,7 +485,7 @@
                                 <div>
                                     <p class="contact-label">Email</p>
                                     <p class="contact-value">
-                                        <a href="mailto:info@jadoo.co">info@jadoo.co</a>
+                                        <a href="mailto: {{ $about->email }}">{{ $about->email }}</a>
                                     </p>
                                 </div>
                             </div>
@@ -497,19 +497,20 @@
                                 <div>
                                     <p class="contact-label">Website</p>
                                     <p class="contact-value">
-                                        <a href="#">www.jadoo.co</a>
+                                        <a href="#">{{ $about->company_name }} Agency</a>
                                     </p>
                                 </div>
                             </div>
 
                             <hr class="info-divider">
-
                             <p class="social-heading">Follow us</p>
                             <div class="social-links">
-                                <a href="#!" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
-                                <a href="#!" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
-                                <a href="#!" class="social-btn"><i class="fa-brands fa-x-twitter"></i></a>
-                                <a href="#!" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+                                <a href="{{ $about->facebook_link }}" class="social-btn"><i
+                                        class="fa-brands fa-facebook-f"></i></a>
+                                <a href="{{ $about->instagram_link }}" class="social-btn"><i
+                                        class="fa-brands fa-instagram"></i></a>
+                                <a href="{{ $about->youtube_link }}" class="social-btn"><i
+                                        class="fa-brands fa-youtube"></i></a>
                             </div>
                         </div>
 
@@ -521,5 +522,3 @@
     </section>
 
 @endsection
-
-{{-- JS только для booking --}}
