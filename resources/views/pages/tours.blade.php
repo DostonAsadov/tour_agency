@@ -437,19 +437,19 @@
                             <a href="{{ route('tours') }}" class="cat-pill {{ !request('category') ? 'active' : '' }}">
                                 All Tours
                             </a>
-                            @foreach($categories as $category)
-                                <a href="#" class="cat-pill {{ request('category') == $category->slug ? 'active' : '' }}">
-                                    {{ $category->name }}
+                            @foreach($categories as $cat)
+                                <a href="{{ route('tours', ['category' => $cat->slug]) }}"
+                                    class=" cat-pill {{ request('category') == $cat->slug ? 'active' : '' }}">
+                                    {{ $cat->name }}
                                 </a>
                             @endforeach
                         </div>
                     </div>
-                    {{--
                     <div class="col-lg-4">
                         <p class="filter-label">Search</p>
                         <form action="{{ route('tours') }}" method="GET">
                             @if(request('category'))
-                            <input type="hidden" name="category" value="{{ request('category') }}">
+                                <input type="hidden" name="category" value="{{ request('category') }}">
                             @endif
                             <div class="search-wrap">
                                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -458,7 +458,6 @@
                             </div>
                         </form>
                     </div>
-                    --}}
                 </div>
             </div>
         </div>
@@ -539,18 +538,17 @@
 
                     {{-- Pagination --}}
 
-                    {{--
                     @if($tours->hasPages())
-                    <div class="d-flex justify-content-center mt-5">
-                        {{ $tours->appends(request()->query())->links() }}
-                    </div>
+                        <div class="d-flex justify-content-center mt-5">
+                            {{ $tours->appends(request()->query())->links() }}
+                        </div>
                     @endif
-                    --}}
+
                 @else
                     <div class="empty-state">
                         <i class="fa-solid fa-compass"></i>
                         <p>No tours found. Try a different search or category.</p>
-                        <a href="{{ route('tours.index') }}" class="btn-tour d-inline-block mt-3"
+                        <a href="{{ route('tours') }}" class="btn-tour d-inline-block mt-3"
                             style="width:auto; padding: 0.7rem 2rem;">
                             Show All Tours
                         </a>

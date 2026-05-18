@@ -6,12 +6,14 @@ use App\Filament\Resources\TourResource\Pages;
 use App\Filament\Resources\TourResource\RelationManagers;
 use App\Models\Tour;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -61,6 +63,13 @@ class TourResource extends Resource
                         'Bahor' => 'Bahor',
                         'Kuz' => 'Kuz',
                     ]),
+                FileUpload::make('image')->label('Rasm')
+                    ->image()
+                    ->disk('public')
+                    ->directory('tours')
+                    ->imageEditor()
+                    ->nullable()
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -69,6 +78,7 @@ class TourResource extends Resource
         return $table
             ->columns([
                 //
+                ImageColumn::make('image')->label('Rasm')->disk('public')->square(),
                 TextColumn::make('name')->label('Tour nomi'),
                 TextColumn::make('categories.name')->label('Kategoriya')->badge()->separator(', '),
                 TextColumn::make('description')->label('Tasnifi'),

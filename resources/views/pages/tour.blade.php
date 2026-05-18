@@ -471,7 +471,7 @@
                 @if($tour->categories->count())
                     <div class="tour-hero-cats mt-3">
                         @foreach($tour->categories as $cat)
-                            <span class="hero-cat">{{ $cat->name }}</span>
+                            <a href="{{ route('tours', ['category' => $cat->slug]) }}" class="hero-cat" style="text-decoration:none;">{{ $cat->name }}</a>
                         @endforeach
                     </div>
                 @endif
@@ -568,7 +568,7 @@
                                         <p class="detail-key">Categories</p>
                                         <div class="cats-wrap mt-1">
                                             @foreach($tour->categories as $cat)
-                                                <a href="#" class="cat-tag">{{ $cat->name }}</a>
+                                                <a href="{{ route('tours', ['category' => $cat->slug]) }}" class="cat-tag">{{ $cat->name }}</a>
                                             @endforeach
                                         </div>
                                     </div>
@@ -604,7 +604,7 @@
                                 </div>
                             @endif
 
-                            <a href="#" class="btn-book">
+                            <a href="{{ route('booking.index', ['tour' => $tour->id]) }}" class="btn-book">
                                 <i class="fa-solid fa-paper-plane me-2"></i> Book This Tour
                             </a>
                             <a href="{{ route('tours') }}" class="btn-book-outline">

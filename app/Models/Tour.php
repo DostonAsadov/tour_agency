@@ -23,7 +23,8 @@ class Tour extends Model
         'price',
         'duration',
         'capacity_of_people',
-        'season'
+        'season',
+        'image',
     ];
     protected $casts = [
         'price' => 'decimal:2',

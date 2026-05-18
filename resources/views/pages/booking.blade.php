@@ -437,6 +437,16 @@
                                         placeholder="Desired destination">
                                 </div>
 
+                                @if(!empty($tourDetails))
+                                <div class="input-icon-wrap">
+                                    <i class="fa-solid fa-suitcase field-icon top-icon"></i>
+                                    <textarea class="booking-input" id="tour_details" name="tour_details" rows="3"
+                                        readonly style="background:#f0f4f9; color:#5E6282; cursor:default;">{{ $tourDetails }}</textarea>
+                                </div>
+                                @else
+                                <input type="hidden" name="tour_details" value="">
+                                @endif
+
                                 <div class="input-icon-wrap">
                                     <i class="fa-regular fa-calendar field-icon top-icon"></i>
                                     <textarea class="booking-input" id="message" name="message" rows="4"
