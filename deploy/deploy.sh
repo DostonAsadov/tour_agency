@@ -24,14 +24,6 @@ echo " Installing PHP dependencies..."
 echo "=============================="
 composer install --no-dev --optimize-autoloader --no-interaction
 
-# ---- Frontend build ----
-echo "=============================="
-echo " Building frontend assets..."
-echo "=============================="
-npm ci
-npm run build
-rm -rf node_modules
-
 # ---- Environment file ----
 echo "=============================="
 echo " Setting up .env..."
@@ -103,7 +95,11 @@ echo "=============================="
 echo " Setting up SSL (Let's Encrypt)..."
 echo "=============================="
 apt install -y certbot python3-certbot-nginx
-certbot --nginx -d "$DOMAIN" -d "www.$DOMAIN" --non-interactive --agree-tos \
+# Note: Let's Encrypt does not issue certs for bare IP addresses.
+# If you have a real domain, use that. If not, use sslip.io:
+#   e.g. for IP 72.56.40.182 → domain is 72-56-40-182.sslip.io
+# Make sure Nginx server_name and APP_URL are updated BEFORE running certbot.
+certbot --nginx -d "$DOMAIN" --non-interactive --agree-tos \
     --email "doston.doc@gmail.com" --redirect
 
 systemctl reload nginx
