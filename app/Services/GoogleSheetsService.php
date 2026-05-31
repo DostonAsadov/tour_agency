@@ -5,10 +5,6 @@ namespace App\Services;
 use Google\Client;
 use Google\Service\Sheets;
 use Google\Service\Sheets\ValueRange;
-use Google\Service\Sheets\BatchUpdateSpreadsheetRequest;
-use Google\Service\Sheets\Request as SheetsRequest;
-use Google\Service\Sheets\AddSheetRequest;
-use Google\Service\Sheets\SheetProperties;
 
 class GoogleSheetsService
 {
@@ -19,12 +15,12 @@ class GoogleSheetsService
     public function __construct()
     {
         $client = new Client();
-        $client->setAuthConfig(base_path(env('GOOGLE_SERVICE_ACCOUNT_JSON')));
+        $client->setAuthConfig(base_path(config('services.google.service_account_json')));
         $client->addScope(Sheets::SPREADSHEETS);
 
-        $this->service     = new Sheets($client);
-        $this->spreadsheetId = env('GOOGLE_SHEETS_SPREADSHEET_ID');
-        $this->sheetName   = env('GOOGLE_SHEETS_SHEET_NAME', 'Брони');
+        $this->service       = new Sheets($client);
+        $this->spreadsheetId = config('services.google.sheets_spreadsheet_id');
+        $this->sheetName     = config('services.google.sheets_sheet_name');
     }
 
     /*     // Получить все существующие листы

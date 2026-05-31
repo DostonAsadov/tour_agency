@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'google' => [
+        'service_account_json' => env('GOOGLE_SERVICE_ACCOUNT_JSON'),
+        'sheets_spreadsheet_id' => env('GOOGLE_SHEETS_SPREADSHEET_ID'),
+        'sheets_sheet_name' => env('GOOGLE_SHEETS_SHEET_NAME', 'Брони'),
+    ],
+
 ];
